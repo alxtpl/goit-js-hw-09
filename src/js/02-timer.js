@@ -3,7 +3,7 @@ import flatpickr from 'flatpickr';
 // Дополнительный импорт стилей
 import 'flatpickr/dist/flatpickr.min.css';
 
-// import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const inputNode = document.querySelector('input[type="text"]');
 const startBtn = document.querySelector('button[data-start]');
@@ -31,7 +31,8 @@ const options = {
         console.log(options.defaultDate);
         console.log(options.defaultDate > selectedDates[0]);
         if (options.defaultDate > selectedDates[0]) {
-            window.alert('Please choose a date in the future');
+            // window.alert('Please choose a date in the future');
+            Notify.failure('Please choose a date in the future');
             startBtn.disabled = true;
             return;
         }
@@ -66,12 +67,12 @@ console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20
 
 function onStart() {
     console.log('Start');
+    Notify.success('Countdown started');
     startBtn.disabled = true;
     timerId = setInterval(() => {
         if (timeGap > 1000) {
             timeGap -= 1000;
             const { days, hours, minutes, seconds } = convertMs(timeGap);
-
             daysNode.textContent = days;
             hoursNode.textContent = hours;
             minutesNode.textContent = minutes;
