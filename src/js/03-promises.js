@@ -9,9 +9,10 @@ const createBtn = document.querySelector('[type="submit"]').addEventListener('cl
 
 function onCreate(e) {
     e.preventDefault();
+    console.log('Create');
     //   console.log('firstDelayNode', firstDelayNode.value);
     //   console.log('firstDelayNode', delayStepNode.value);
-    console.log('firstDelayNode', amountNode.value);
+    console.log('amountNode', amountNode.value);
     let delayVar = +firstDelayNode.value;
     let positionVar = +delayStepNode.value;
     for (let index = 0; index < amountNode.value; index++) {
